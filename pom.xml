@@ -1,0 +1,165 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>cn.aaron911</groupId>
+    <artifactId>aaron911-oauth</artifactId>
+    <version>1.0.0</version>
+
+    <description>
+        整合第三方登录。目前已支持Github、Gitee、微博、钉钉、百度、Coding、腾讯云开发者平台、OSChina、支付宝、
+        QQ、微信开放平台、微信公众平台、淘宝、Google、Facebook、抖音、领英、小米、微软、今日头条、Teambition、StackOverflow、Pinterest、人人、华为、
+        企业微信、酷家乐、Gitlab、美团、饿了么和推特等第三方平台的授权登录。
+        Login, so easy!
+    </description>
+
+    <developers>
+        <developer>
+            <id>aaron911</id>
+            <name>aaron</name>
+            <url>aaron911.cn</url>
+            <email>450870442@qq.com</email>
+        </developer>
+    </developers>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <scm>
+        <connection>scm:git:git@github.com:myma911/aaron911-oauth.git</connection>
+        <developerConnection>scm:git:git@github.com:myma911/aaron911-oauth.git</developerConnection>
+        <url>git@github.com:myma911/aaron911-oauth.git</url>
+    </scm>
+
+    <distributionManagement>
+        <repository>
+            <id>sonatype-nexus-staging</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+        </repository>
+        <snapshotRepository>
+            <id>sonatype-nexus-snapshots</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven-source.version>2.2.1</maven-source.version>
+        <maven-compiler.version>3.8.1</maven-compiler.version>
+        <maven-javadoc.version>3.1.0</maven-javadoc.version>
+        <cobertura-version>2.7</cobertura-version>
+        <maven-surefire-version>2.20</maven-surefire-version>
+        <maven-gpg-version>1.6</maven-gpg-version>
+        <maven.test.skip>false</maven.test.skip>
+
+
+        <simple-http.version>1.0.2</simple-http.version>
+        <lombok-version>1.18.10</lombok-version>
+        <junit-version>4.11</junit-version>
+        <fastjson-version>1.2.71</fastjson-version>
+        <alipay-sdk-version>4.8.10.ALL</alipay-sdk-version>
+        <jacoco-version>0.8.2</jacoco-version>
+        <hutool-all.version>4.6.8</hutool-all.version>
+        <projectlombok.version>1.18.12</projectlombok.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${projectlombok.version}</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>com.xkcoding.http</groupId>
+            <artifactId>simple-http</artifactId>
+            <version>${simple-http.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit-version}</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson-version}</version>
+        </dependency> -->
+        <dependency>
+            <groupId>com.alipay.sdk</groupId>
+            <artifactId>alipay-sdk-java</artifactId>
+            <version>${alipay-sdk-version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- hutool -->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>${hutool-all.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>${project.artifactId}-${project.version}</finalName>
+        <plugins>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.2.1</version>
+                <configuration>
+                    <attach>true</attach>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.1.1</version>
+                <configuration>
+                    <doclint>none</doclint>
+                </configuration>
+            </plugin>
+
+
+            <!-- 跳过单元测试 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+</project>
