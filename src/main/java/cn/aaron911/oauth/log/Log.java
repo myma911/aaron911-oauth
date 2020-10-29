@@ -45,7 +45,7 @@ public class Log {
     }
 
     /**
-     * 打印日志内容，格式：2019-08-02 20:44:07 main me.zhyd.oauth.log.Log(debug:39) [DEBUG] - xxxx
+     * 打印日志内容
      *
      * @param level 日志级别
      * @param msg   日志内容

@@ -15,7 +15,7 @@ import cn.aaron911.oauth.model.AuthCallback;
  * 注：
  * ①、如需通过JustAuth扩展实现第三方授权，请参考{@link AuthDefaultSource}自行创建对应的枚举类并实现{@link AuthSource}接口
  * ②、如果不是使用的枚举类，那么在授权成功后获取用户信息时，需要单独处理source字段的赋值
- * ③、如果扩展了对应枚举类时，在{@link me.zhyd.oauth.request.AuthRequest#login(AuthCallback)}中可以通过{@code xx.toString()}获取对应的source
+ * ③、如果扩展了对应枚举类时，在{@link cn.aaron911.oauth.request.AuthRequest#login(AuthCallback)}中可以通过{@code xx.toString()}获取对应的source
  *
  */
 public interface AuthSource {

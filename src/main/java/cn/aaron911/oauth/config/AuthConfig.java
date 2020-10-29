@@ -1,10 +1,11 @@
 package cn.aaron911.oauth.config;
 
+import cn.aaron911.oauth.model.AuthCallback;
 import com.xkcoding.http.config.HttpConfig;
 import lombok.*;
 
 /**
- * JustAuth配置类
+ * 配置类
  *
  */
 @Getter
@@ -80,7 +81,7 @@ public class AuthConfig {
 
     /**
      * 忽略校验 {@code state} 参数，默认不开启。当 {@code ignoreCheckState} 为 {@code true} 时，
-     * {@link me.zhyd.oauth.request.AuthDefaultRequest#login(AuthCallback)} 将不会校验 {@code state} 的合法性。
+     * {@link cn.aaron911.oauth.request.AuthDefaultRequest#login(AuthCallback)}  将不会校验 {@code state} 的合法性。
      *
      * 使用场景：当且仅当使用自实现 {@code state} 校验逻辑时开启
      *
@@ -91,8 +92,6 @@ public class AuthConfig {
      *
      * <strong>如非特殊需要，不建议开启这个配置</strong>
      *
-     * 该方案主要为了解决以下类似场景的问题：
-     * @see <a href="https://github.com/justauth/JustAuth/issues/83">https://github.com/justauth/JustAuth/issues/83</a>
      */
     private boolean ignoreCheckState;
 }
